@@ -1,0 +1,1 @@
+####aureliadmin sample application
