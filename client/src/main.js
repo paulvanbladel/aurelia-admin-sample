@@ -6,7 +6,7 @@ export function configure(aurelia) {
     .plugin('aurelia-animator-css')
     .plugin('./modules/welcome/index', (router)=>{
 		router.addRoute({ 
-            route:  'welcome', 
+            route:  '', 
             name: 'welcome',  
             fa:'fa-bed' , 
             moduleId: './modules/welcome/welcome', 
