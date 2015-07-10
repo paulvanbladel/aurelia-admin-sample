@@ -1,10 +1,47 @@
 <template>
-  <require from='./components/side-bar'></require>
+  <!-- <require from='./components/side-bar'></require> -->
   <require from='./components/header-bar'></require>
-  <div id="page-wrapper" class="${toggle? 'open':''}"  ng-class="{'open': toggle}" ng-cloak>
+  <div id="page-wrapper" class="${toggle? 'open':''}" >
 
     <!-- Sidebar -->
-    <side-bar router.bind="router"></side-bar>
+    <!-- <side-bar toggleSidebar.bind="toggleSidebar" router.bind="router"></side-bar> -->
+    <div id="sidebar-wrapper" >
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a click.delegate="toggleSidebar()">
+            Dashboard
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        <li class="sidebar-list">
+          <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+        </li>
+
+        <li class="sidebar-list" repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in"
+          href.bind="row.href">${row.title} <span class="${'menu-icon fa ' + row.config.fa}"></span></a>
+        </li>
+
+      </ul>
+      <div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="https://github.com/paulvanbladel/aureliadmin-sample" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="https://github.com/paulvanbladel" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#">
+            Support
+          </a>
+        </div>
+      </div>
+    </div>
     <!-- End Sidebar -->
 
     <div id="content-wrapper">
