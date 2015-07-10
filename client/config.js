@@ -6,6 +6,7 @@ System.config({
       "es7.classProperties",
       "runtime"
     ]
+    
   },
   "paths": {
     "*": "dist/*.js",
