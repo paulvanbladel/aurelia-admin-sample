@@ -1,6 +1,8 @@
 <template>
   <require from='./components/side-bar'></require>
   <require from='./components/header-bar'></require>
+  <!-- gotcha: sidebar refers via .ref to side-bar components
+  we use this in order to geth the toggle var from the side-bar in consumer (app.html) -->
   <div id="page-wrapper" class="${sidebar.toggle? 'open':''}" >
 
     <!-- Sidebar -->

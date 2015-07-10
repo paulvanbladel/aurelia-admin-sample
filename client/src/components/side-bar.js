@@ -11,6 +11,14 @@ export class SideBar {
 		this.observerLocator = observerLocator;
 		this.localStorage = localStorage;
 		console.log('activate called in side bar');
+		this._createInnerWidthSubscription();
+
+	}
+	get width (){
+		return window.innerWidth;
+	}
+
+	_createInnerWidthSubscription(){
 		this.innerWidthsubscription = this.observerLocator.getObserver(this,'width')
 		.subscribe((newValue,oldValue)=>{
 			if (newValue >= this.mobileView) {
@@ -23,9 +31,6 @@ export class SideBar {
 				this.toggle = false;
 			}
       });
-	}
-	get width (){
-		return window.innerWidth;
 	}
 
 	toggleSidebar = function(){
