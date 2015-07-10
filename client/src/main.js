@@ -13,7 +13,7 @@ export function configure(aurelia) {
             nav: true, 
             title:'Welcome' });
         router.addRoute({ 
-            route:  'welcome', 
+            route:  '', 
             name: 'welcome',  
             fa:'fa-bed' , 
             moduleId: './modules/welcome/welcome', 
