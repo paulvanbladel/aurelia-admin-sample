@@ -29,7 +29,7 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.13",
     "font-awesome": "npm:font-awesome@4.3.0",
-    "paulvanbladel/rdash-ui": "github:paulvanbladel/rdash-ui@1.1.2",
+    "paulvanbladel/rdash-ui": "github:paulvanbladel/rdash-ui@1.0.2",
     "github:aurelia/animator-css@0.13.0": {
       "aurelia-templating": "github:aurelia/templating@0.13.0"
     },
