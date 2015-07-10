@@ -1,6 +1,5 @@
 import {computedFrom} from 'aurelia-framework';
 import {inject} from 'aurelia-framework';
-import {ContactUpdated} from '../messages';
 
 
 export class Welcome{
