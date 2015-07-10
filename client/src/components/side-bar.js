@@ -14,13 +14,12 @@ export class SideBar {
 		return window.innerWidth;
 	}
 
-
 	toggleSidebar(){
 		this.toggle = !this.toggle;
 		this.localStorage.set('toggle',this.toggle)		;
 	}
 	activate(){
-		this.subscription = this.observerLocator.getObserver(this,'width')
+		this.innerWidthsubscription = this.observerLocator.getObserver(this,'width')
 		.subscribe((newValue,oldValue)=>{
 			if (newValue >= this.mobileView) {
 				if ((this.localStorage.get('toggle')) !== 'undefined') {
@@ -35,7 +34,7 @@ export class SideBar {
 	}
 	deactivate(){
 		console.log("dispose subscription");
-    	this.subscription(); // disposing the subscription
+    	this.innerWidthsubscription(); // disposing the subscription
     }
 
 }
