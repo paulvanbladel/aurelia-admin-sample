@@ -3,11 +3,11 @@ import {HttpClient} from 'aurelia-http-client';
 import {Metadata} from 'aurelia-metadata';
 @inject(HttpClient)
 export class Flickr{
-    heading = 'Flickr';
-  images = [];
-  url = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=mountain&tagmode=any&format=json';
-  
-  constructor(http){
+heading = 'Flickr';
+images = [];
+url = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=mountain&tagmode=any&format=json';
+ 
+constructor(http){
     this.http = http;
     
   }

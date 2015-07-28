@@ -3,8 +3,8 @@ export function configure(aurelia) {
 	aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('aurelia-animator-css')
-    .plugin('./modules/welcome/index', (router)=>{
+    .plugin('aurelia-animator-css');
+    /*.plugin('./modules/welcome/index', (router)=>{
       router.addRoute({ 
         route:  'welcome', 
         name: 'welcome',  
@@ -28,7 +28,18 @@ export function configure(aurelia) {
         moduleId: './modules/flickr/flickr',       
         nav: true, 
         title:'Flickr' });
-    });
+    })
+
+    .plugin('./modules/customer/index', (router)=>{
+      router.addRoute({ 
+        route: 'customer', 
+        name: 'customer', 
+        fa:'fa-camera-retro'   ,     
+        moduleId: './modules/customer/index',       
+        nav: true, 
+        title:'Customers' });
+    });*/
+
     
     aurelia.start().then(a => a.setRoot());
 }

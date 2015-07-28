@@ -10,7 +10,6 @@ export class SideBar {
 	constructor(observerLocator, localStorage){
 		this.observerLocator = observerLocator;
 		this.localStorage = localStorage;
-		console.log('activate called in side bar');
 		this._createInnerWidthSubscription();
 
 	}
