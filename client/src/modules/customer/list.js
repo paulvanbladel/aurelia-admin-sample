@@ -10,7 +10,6 @@ export class List {
   constructor(data) {
     this.service = data;
     this.currentPage = 0;
-    console.log("constructor");
   }
 
   getMoreData() {
@@ -26,8 +25,6 @@ export class List {
   }
 
   activate() {
-    console.log("acitvate start");
     return this.getMoreData();
-    console.log("activate end");
   }
 }
