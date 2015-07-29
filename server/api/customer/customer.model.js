@@ -11,7 +11,8 @@ var schema = new Schema({
     notes: String
 
 });
-
+var mongoosePaginate = require('mongoose-paginate');
+schema.plugin(mongoosePaginate);
 // Duplicate the ID field.
 //schema.virtual('id').get(function(){
 //    return this._id.toHexString();

@@ -13,6 +13,7 @@ var _ = require('lodash');
 var Entity = require('./customer.model');
 
 
+
 exports.myMethod = function (req, res) {
     Entity.find(function (err, items) {
         if (err) {
@@ -28,21 +29,36 @@ exports.myMethod = function (req, res) {
 exports.index = function (req, res) {
     //save way to pass query params
     var query = {};
+    var page = 1;
+    if (req.query.page) {
+        console.log("page requested "  + req.query.page);
+        page = req.query.page;
+    };
 
     if (req.query.firstName) {
         query.firstName = req.query.firstName;
     };
-    Entity.find(query,function (err, items) {
+    // Entity.find(query,function (err, items) {
+    //     if (err) {
+    //         return handleError(res, err);
+    //     }
+    //     return res.status(200).json(items)
+    // });
+    Entity.paginate(query,{page:page, limit:3}, function(err, items, pageCount, itemCount){
         if (err) {
             return handleError(res, err);
         }
+        console.log("pageCount " + pageCount);
+        console.log("itemCount " + itemCount);
         return res.status(200).json(items)
     });
 };
 
 // Get a single item
 exports.show = function (req, res) {
+    console.log("by id " + req.params.id);
     Entity.findById(req.params.id, function (err, item) {
+        
         if (err) {
             return handleError(res, err);
         }
