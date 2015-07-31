@@ -11,24 +11,42 @@ export class Edit {
     this.router = router;
   }
 
-  activate(params) {
-    if (params.id) {
-      return this.data.getById(params.id)
-        .then(customer => {
-          this.customer = customer;
-        });
-    }
-    else {
-      this.customer = {};
-    }
+  cancel(){
+    //this.customer = this.original;
+    return this._loadCustomer(this.customer._id);
   }
 
+  goBack(){
+    window.history.back();
+  }
+
+  activate(params) {
+    this.original = {};
+    this.customer = {};
+
+    if (params.id) {
+       return this._loadCustomer(params.id);
+    }
+  }
+  _loadCustomer(id){
+    return this.data.getById(id)
+        .then(customer => {
+          this.original = JSON.parse(JSON.stringify(customer));
+          return this.customer = customer;
+        });
+  };
+
+  get isUnchanged(){
+    return this.areEqual(this.customer, this.original);
+  }
   save() {
     this.data.save(this.customer)
       .then(customer => {
-        let url = this.router.generate("detail", {id: customer._id});
-        this.router.navigate(url);
+        this.original = JSON.parse(JSON.stringify(customer));
+        this.router.navigate("list");
       });
-  }
-
+  };
+  areEqual(obj1, obj2) {
+  return Object.keys(obj1).every((key) => obj2.hasOwnProperty(key) && (obj1[key] === obj2[key]));
+};
 }

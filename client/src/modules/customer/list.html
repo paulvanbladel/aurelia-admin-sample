@@ -1,27 +1,47 @@
 <template>
-  <section >
-    <h2>${heading}</h2>
-    <div class="row au-stagger">
-      <a route-href="route:create"
-      class="btn btn-default">
-      Create New
-    </a>
-    <button click.delegate="getMoreData()"
-      class="btn btn-default">
-      More
+<div class="row au-stagger">
+    <rd-widget>
+    <rd-widget-header icon="fa-tasks" title="Serversxxx">
+    <button class="btn btn-info"
+    click.delegate="new()">
+    New
     </button>
-    <div  repeat.for="customer of customers">
-      <p>${customer.firstName}</p>
-      <h3>${customer.lastName}</h3>
-      <a route-href="route:detail; params.bind:{id:customer._id}" 
-      class="btn btn-default">
-      Details
-    </a>
-    <a route-href="route:edit; params.bind:{id:customer._id}"
-    class="btn btn-default">
-    Edit
-  </a>
+    </rd-widget-header>
+    <rd-widget-body classes="medium no-padding">
+    <div class="table-responsive">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="customer of customers"
+                    click.delegate="$parent.gotoCustomer(customer)">
+                    <td>
+                      <!-- <a route-href="route:edit; params.bind:{id:customer._id}"> -->
+                      <a click.delegate="$parent.gotoCustomer(customer)">
+                        ${customer.lastName}
+                    </a></td>
+                    <td>${customer.firstName}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </rd-widget-body>
+    <rd-widget-footer>
+    <!-- <ul class="pagination pagination-sm pull-right">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+    </ul> -->
+    <div class="clearfix"></div>
+    </rd-widget-footer>
+    </rd-widget>
 </div>
-</div>
-</section>
 </template>

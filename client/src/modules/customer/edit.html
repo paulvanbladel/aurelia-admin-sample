@@ -1,46 +1,50 @@
 <template>
-    <div class="container">
-        <div class="panel panel-default">
-
-            <div class="panel-heading">
-                <div class="panel-title">
-                    <h3>Editing ${customer.lastName}</h3>
-                </div>
+<div class="row">
+    <rd-widget>
+    <rd-widget-header>
+    <h3>Editing ${customer.lastName}</h3>
+    <button class="btn btn-info"
+    click.delegate="goBack()">
+    Back
+    </button>
+    <button class="btn btn-info"
+    click.delegate="cancel()"
+    disabled.bind="isUnchanged">
+    Cancel
+    </button>
+    <button class="btn btn-info"
+    click.delegate="save()"
+    disabled.bind="isUnchanged">
+    Save
+    </button>
+    <!-- <span show.bind="!isUnchanged">
+                    <i class="fa fa-asterisk fa fa-asterisk-large" rel="tooltip" title="You have changes"></i>
+                </span> -->
+    </rd-widget-header>
+    <rd-widget-body>
+    <form class="form-horizontal"
+        validate.bind="validation">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="First Name"  class="form-control"
+                value.bind="customer.firstName" />
             </div>
-
-            <div class="panel-body">
-
-                <form class="form-horizontal" 
-                      validate.bind="validation"
-                      submit.trigger="save()">
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">First Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" placeholder="First Name"  class="form-control"
-                                   value.bind="customer.firstName" />
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Last Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" placeholder="Last Name" class="form-control"
-                                   value.bind="customer.lastName" />
-                        </div>
-                    </div>
-
-                   
-
-                    <input type="submit" 
-                           
-                           class="btn btn-primary" value="Save" />
-
-                </form>
-                <!-- disabled.bind="!validation.result.isValid" -->
-
-            </div>
-
         </div>
-    </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="Last Name" class="form-control"
+                value.bind="customer.lastName" />
+            </div>
+        </div>
+    </form>
+    </rd-widget-body>
+    <rd-widget-footer>
+
+    </rd-widget-footer>
+    </rd-widget>
+</div>
+</rd-widget>
+</div>
 </template>

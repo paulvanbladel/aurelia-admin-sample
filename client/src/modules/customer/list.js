@@ -1,30 +1,39 @@
 import {inject} from 'aurelia-framework';
 import {CustomerData} from "./customerData";
-
-@inject(CustomerData)
+import {Router} from "aurelia-router";
+@inject(CustomerData, Router)
 export class List {
   heading = 'Customer management';
   
   customers = [];
 
-  constructor(data) {
+  constructor(data, router) {
     this.service = data;
     this.currentPage = 0;
-  }
+    this.router = router;
+  };
 
-  getMoreData() {
+  gotoCustomer(customer){
+    this.router.navigateToRoute('edit', { id: customer._id })
+  };
+  
+  new(){
+    this.router.navigateToRoute('create');
+  };
+
+  getData() {
     //implement spinner
 
     this.currentPage++;
-    return this.service.getPage(this.currentPage)
+    return this.service.getAll()
       .then(customers => {
-       this.customers = this.customers.concat(customers);
+       this.customers = customers;
        
      });
 
   }
 
   activate() {
-    return this.getMoreData();
+    return this.getData();
   }
 }

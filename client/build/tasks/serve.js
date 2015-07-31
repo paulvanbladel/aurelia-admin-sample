@@ -4,6 +4,7 @@ var proxy = require('proxy-middleware');
 var url = require('url');
 var paths = require('../paths');
 gulp.task('serve', ['build', 'node'], function(done) {
+//gulp.task('serve', ['build'], function(done) {
 
   var proxyOptionsAccessControl = function(req,res, next){
         res.setHeader('Access-Control-Allow-Origin', '*');

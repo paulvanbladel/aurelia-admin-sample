@@ -7,8 +7,8 @@
  * DELETE  /items/:id          ->  destroy
  */
 
+ 
 'use strict';
-
 var _ = require('lodash');
 var Entity = require('./customer.model');
 
@@ -44,7 +44,7 @@ exports.index = function (req, res) {
     //     }
     //     return res.status(200).json(items)
     // });
-    Entity.paginate(query,{page:page, limit:3}, function(err, items, pageCount, itemCount){
+    Entity.paginate(query,{page:page, limit:10000}, function(err, items, pageCount, itemCount){
         if (err) {
             return handleError(res, err);
         }

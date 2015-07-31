@@ -1,6 +1,4 @@
 'use strict';
-
-
 // Set default node environment to development
 
 
@@ -18,11 +16,9 @@ var connectionString = config.mongo.connectionstring;
 
 console.log("connection string : " + connectionString);
 mongoose.connect(connectionString);
-
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
-
 //config express and routing
  /*var env = app.get('env');*/
 app.use(compression());
