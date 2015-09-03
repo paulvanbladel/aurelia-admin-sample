@@ -4,6 +4,7 @@ import 'paulvanbladel/rdash-ui/css/rdash.css!';
 export class App {
 	
     configureRouter(config, router){
+    	config.title = 'Aurelia';
     	config.map([
 				{ route: ['','welcome'], fa:'fa-bed',  moduleId: './modules/welcome/welcome',      nav: true, title:'Welcome' },
 				{ route: 'flickr',   fa:'fa-bus'   ,      moduleId: './modules/flickr/flickr',       nav: true, title:'Flickr' },
